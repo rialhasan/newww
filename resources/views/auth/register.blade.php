@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +73,42 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-3 center">
+                            <div class="panel panel-white" id="js-alerts">
+                                <div class="panel-body">
+                                    <div class="register-box">
+                                        <a href="index.html" class="logo-name text-lg text-center m-t-xs">{{ env('APP_NAME ')}}</a>
+                                        <p class="text-center m-t-md">Create an account.</p>
+                                        <form class="m-t-md" action="{{ route('register') }}" method="post">
+                                        @csrf
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control" placeholder="Name" >
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" name="email" class="form-control" placeholder="Email" >
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password" class="password form-control" placeholder="Password">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password_confirmation" class="password form-control" placeholder="confirm password">
+                                            </div>
+                                            <label>
+                                                <input type="checkbox"> Agree the terms and policy
+                                            </label>
+                                            <button type="submit" class="btn btn-success btn-block m-t-xs">Submit</button>
+                                            <p class="text-center m-t-xs text-sm">Already have an account?</p>
+                                            <a href="{{route('login')}}" class="btn btn-default btn-block m-t-xs">Login</a>
+                                        </form>
+                                        <p class="text-center m-t-xs text-sm">2015 - {{date('Y')}} &copy; stacks</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
 @endsection

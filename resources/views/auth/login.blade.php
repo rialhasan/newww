@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('master')
 
 @section('content')
-<div class="container">
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +69,34 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-3 center">
+                            <div class="panel panel-white" id="js-alerts">
+                                <div class="panel-body">
+                                    <div class="login-box">
+                                        <a href="{{url('/')}}" class="logo-name text-lg text-center m-t-xs">{{ env('APP_NAME ')}}</a>
+                                        <p class="text-center m-t-md">Please login into your account.</p>
+                                        <form class="m-t-md" action="{{ route('login') }}" method="post">
+                                        @csrf 
+                                            <div class="form-group">
+                                                <input type="email" name="email" class="form-control" placeholder="Email" >
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password" class="form-control password" placeholder="Password" >
+                                            </div>
+                                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                                            <a href="{{ route('password.request') }}" class="display-block text-center m-t-md text-sm">Forgot Password?</a>
+                                            <p class="text-center m-t-xs text-sm">Do not have an account?</p>
+                                            <a href="{{route('register')}}" class="btn btn-default btn-block m-t-md">Create an account</a>
+                                        </form>
+                                        <p class="text-center m-t-xs text-sm">2015 - {{date('Y')}} &copy; stacks</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
 @endsection

@@ -28,11 +28,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>SL </th>
-                                                    <th>Category Name</th>
-                                                    <th>Create Size</th>
-                                                    <th>Create Thumbnail</th>
-                                                    <th>Create Quantity</th>
-                                                    <th>Create Color</th>
+                                                    <th>Product Name</th>
+                                                    <th>Product Size</th>
+                                                    <th>Product Thumbnail</th>
+                                                    <th>Product Quantity</th>
+                                                    <th>Product Multi Image</th>
+                                                    <th>Product Color</th>
                                                     <th>Create Time</th>
                                                     <th>Action</th>
                                                     
@@ -46,6 +47,11 @@
                                                     <td class="text-center">{{ $item->product_price}}</td>
                                                     <td class="text-center"><img width="100" height="100" src="{{ $item->category_thubnail}}" alt=""></td>
                                                     <td class="text-center">{{ $item->product_quantity}}</td>
+                                                    <td class="text-center">
+                                                    @foreach (App\MultiImage::where("product_id", $item->id)->get() as $proitem)
+                                                     <img height="100" src="{{ url($proitem->image_name) }}" alt="">
+                                                    @endforeach
+                                                    </td>
                                                     <td class="text-center">
                                                     @php
                                                         $count= 1;
@@ -64,7 +70,8 @@
                                                    </td>
                                                     <td class="text-center">{{ $item->created_at->format("D M Y") }}</td>
                                                     <td>
-                                                    <a href="#" class="btn btn-info">Edit</a>
+                                                    <a href="{{ route('productEdit',$item->id) }}" class="btn btn-info">Edit</a>
+                                                    <a href="{{ route('singleproduct', [$item->slug, $item->id) }}" class="btn btn-info">View</a>
                                                     <a href="#" class="btn btn-danger">Delete</a>
                                                     </td>
                                                     

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Color;
 use App\Size;
+use App\MultiImage;
 use App\Category;
 use App\SubCategory;
 use App\Product;
@@ -14,11 +15,12 @@ use Image;
 class ProductController extends Controller
 {
    function product(){
+       $unique_code= Str::random(10);
        $colors = Color::orderBy("color_name","asc")->get();
        $sizes = Size::orderBy("size_name","asc")->get();
        $categorics = Category::orderBy("category_name","asc")->get();
        $subcategorics = SubCategory::orderBy("subcategory_name","asc")->get();
-       return view("backend.product.product",compact("colors","sizes","categorics","subcategorics"));
+       return view("backend.product.product",compact("colors","sizes","categorics","subcategorics", "unique_code"));
    }
 
    function productPost(Request $request){
@@ -88,4 +90,35 @@ class ProductController extends Controller
        $products=Product::paginate();
        return view('backend.product.productview',compact('products'));
    }
+   function productEdit($id){
+    $unique_code= Str::random(10);
+    $colors = Color::orderBy("color_name","asc")->get();
+    $sizes = Size::orderBy("size_name","asc")->get();
+    $categorics = Category::orderBy("category_name","asc")->get();
+    $subcategorics = SubCategory::orderBy("subcategory_name","asc")->get();
+    $product= Product::findOrFail($id);
+    session('product_id',$id);
+    return view("backend.product.productedit",compact("colors","sizes","categorics","subcategorics", "unique_code","product"));
+      
+   }
+
+   function productUpdate(Request $request){
+    if ($request->hasFile('product_thumbnail')){
+    $id= $request->get('product_id');
+    $slug = $request->slug;
+    $get_img= Product::findOrFail($id)->product_thumbnail;
+    // unlink(public_path( $get_img));
+
+    $img= $request->file('product_thumbnail');
+    $ext= $slug.'.'.$img->getClientOriginalExtension();
+    Image::make($img)->resize(270, 350)-save(public_path('product_img/'.$ext));
+    }
+    return view();
+    Product::findOrFail($request->product_id)->update([
+
+    ]);
+
+    return view();
+   }
+  
 }

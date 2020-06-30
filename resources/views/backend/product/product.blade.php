@@ -163,7 +163,7 @@
 <div class="form-group">
     <label for="product_code" class="col-sm-4 control-label">Product Code</label>
     <div class="col-sm-10">
-        <input type="text" name="product_code" class="form-control" id="product_code" placeholder="Product Codeproduct_tags">
+        <input type="text" value="{{ $unique_code}}" readonly name="product_code" class="form-control" id="product_code" >
                                                
     </div>
 </div>

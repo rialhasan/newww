@@ -13,20 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 // Auth::routes();
-
-Route::group(['middleware' => 'auth'], function(){
-
-
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'FrontendController@frontend')->name('front');
+Route::get('/product/cart', 'FrontendController@SingleCart')->name('SingleCart');
+Route::get('/product/{slug}/', 'FrontendController@singleproduct')->name('singleproduct');
+Route::group(['middleware' => 'auth'], function(){
 Route::get('/category/form', 'CategoryController@categoryform')->name('categoryform');
 Route::post('/category/insert', 'CategoryController@categoryinsert')->name('categoryinsert');
 Route::get('/category/view', 'CategoryController@categoryview')->name('categoryview');
@@ -45,7 +42,9 @@ Route::post('/admin/color/post', 'ColorController@colorPost')->name('colorPost')
 //Product Controller
 Route::get('/admin/product', 'ProductController@product')->name('product');
 Route::post('/admin/productpost', 'ProductController@productPost')->name('productPost');
-Route::get('/admin/productlist', 'ProductController@productList')->name('productList');
+Route::get('/admin/product/list', 'ProductController@productList')->name('productList');
+Route::get('/admin/product/edit/{id}', 'ProductController@productEdit')->name('productEdit');
+Route::post('/admin/product/update', 'ProductController@productUpdate')->name('productUpdate');
 
 });
 
