@@ -1,12 +1,12 @@
 <?php
 
+namespace App\Http\Controllers;
 use App\Color;
 use App\Cart;
 use App\Size;
 use App\Category;
 use App\MultiImage;
 use App\Product;
-namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class Frontendcontroller extends Controller
 {
     function frontend(){
         $cats = Category::orderBy("category_name", "asc")->get();
-        return view('frontend.main',compact("$cats"));
+        return view('frontend.main',compact("cats"));
     }
 
     function singleproduct($slug){
