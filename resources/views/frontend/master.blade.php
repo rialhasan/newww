@@ -70,11 +70,11 @@
   </a>
    <ul>
         <li class="">
-            <a href="{{url('/)}}">
+            <a href="{{url('/')}}">
               Home
             </a>
             <ul>
-              <a class="" href="{{url('/)}}">Home</a>
+              <a class="" href="{{url('/')}}">Home</a>
               
             </ul>
           </li>
@@ -138,7 +138,7 @@
 
             <li class="nav-item dropdown">
                 
-                  <a class="dropdown-item" href="{{url('/)}}">Home</a>
+                  <a class="dropdown-item" href="{{url('/')}}">Home</a>
                   
               </li>
               <li><a class="dropdown-item" href="about.html">About</a></li>
@@ -312,7 +312,7 @@
 </nav>
 <!-- mobile logo end -->  
    
-@yield('content')
+@yield('content') 
    
    <!-- Footer Part Start -->
    <section id="footer">

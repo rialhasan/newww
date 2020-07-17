@@ -42,7 +42,7 @@
         <main class="page-content">
             <div class="page-inner">
             
-          @{{ url('/') }}/yield('content')
+          @yield('content')
 
             </div><!-- Page Inner -->
         </main><!-- Page Content -->

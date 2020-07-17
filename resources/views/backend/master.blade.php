@@ -352,7 +352,7 @@
                          <li class="droplink @yield('product')"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-envelope-open"></span><p>Product</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="{{route('product')}}"><i class='fa fa-plus'></i>Add</a></li>
-                                <li><a href="{{route('productList}}"><i class='fa fa-eye'></i>Read</a></li>
+                                <li><a href="{{route('productList')}}"><i class='fa fa-eye'></i>Read</a></li>
                                 <li><a href="#"><i class='fa fa-trash'></i>Trash</a></li>
                             </ul>
                         </li>

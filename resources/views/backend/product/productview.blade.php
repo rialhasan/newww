@@ -53,9 +53,9 @@
                                                     @endforeach
                                                     </td>
                                                     <td class="text-center">
-                                                    @php
+                                                    {{-- @php
                                                         $count= 1;
-                                                        $data= count(json_decode($item->product_color ));
+                                                        $data= count(json_decode($item->product_color ) ?? 0);
                                                     @endphp
                                                     @foreach (json_decode($item->product_color) as $value)
                                                     {{ $value}}
@@ -65,13 +65,13 @@
                                                     @php
                                                          $count++;
                                                     @endphp
-                                                    @endforeach     
+                                                    @endforeach      --}}
 
                                                    </td>
                                                     <td class="text-center">{{ $item->created_at->format("D M Y") }}</td>
                                                     <td>
-                                                    <a href="{{ route('productEdit',$item->id) }}" class="btn btn-info">Edit</a>
-                                                    <a href="{{ route('singleproduct', [$item->slug, $item->id) }}" class="btn btn-info">View</a>
+                                                    <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">Edit</a>
+                                                    <a href="{{ route('singleproduct', [$item->slug, $item->id]) }}" class="btn btn-info">View</a>
                                                     <a href="#" class="btn btn-danger">Delete</a>
                                                     </td>
                                                     

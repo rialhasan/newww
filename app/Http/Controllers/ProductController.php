@@ -25,17 +25,15 @@ class ProductController extends Controller
 
    function productPost(Request $request){
 
-
+// dd($request->all());
     $request->validate([
-        $slug= $request->slug;
-
-        'product_thumbnail' => 'required|mimes:jpeg,bmp,png'
+        'product_thumbnail' => 'required',
     ]);
-
+    $slug= $request->slug;
     if ($request->hasFile('product_thumbnail')){
     $img= $request->file('product_thumbnail');
     $ext= $slug.'.'.$img->getClientOriginalExtension();
-    Image::make($img)->resize(270, 350)-save(public_path('product_img/'.$ext));
+    Image::make($img)->resize(270, 350)->save(public_path('product_img/'.$ext));
     }
     else{
         echo "No Image";
@@ -43,22 +41,21 @@ class ProductController extends Controller
 
 
 
-    $product_id= Product::insertGetId([
+    $product= Product::create([
         'product_name' => $request->product_name,
         'slug' =>$request->slug,
         'product_summary' =>$request->product_summary,
         'product_description' =>$request->product_description,
         'product_color' =>$request->product_color,
-        'product_size' =>$request->product_size,
+        'product_size' =>$request->product_size ?? 0,
         'product_price' =>$request->product_price,
         'product_thumbnail' =>'product_img/'.$ext,
         'product_quantity' =>$request->product_quantity,
-        'category_id' =>$request->category_id,
-        'subcategory_id' =>$request->subcategory_id,
+        'category_id' =>$request->category_id ?? 0,
+        'subcategory_id' =>$request->subcategory_id ?? 0,
         'product_alart' =>$request->product_alart,
         'product_code' =>$request->product_code,
-        'product_tags' =>$request->product_tags,
-        'created_at'=> Carbon::now("Asia/Dhaka")
+        'product_tags' =>$request->product_tags
     ]);
 
     if ($request->hasFile('product_image')){
@@ -66,14 +63,12 @@ class ProductController extends Controller
 
         foreach($img as $mg){
             $ext= $slug.Str::random(5).'.'.$mg->getClientOriginalExtension();
-        Image::make($mg)->resize(270, 350)-save(public_path('product_img/multi/'.$ext));
+        Image::make($mg)->resize(270, 350)->save(public_path('product_img/multi/'.$ext));
            
 
-         MultiImage::insert([
-          
-            'product_id'=> $product_id,
+         MultiImage::create([
+            'product_id'=> $product->id,
             'image_name'=> '/product_img/multi/'.$ext,
-            'created_at'=> Carbon::now("Asia/Dhaka")
          ]);
         }
         
@@ -82,7 +77,7 @@ class ProductController extends Controller
             echo "No Image";
         }
 
-    return back();
+    return redirect()->back();
 
    }
  
