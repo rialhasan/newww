@@ -22,14 +22,14 @@
            <div class="row">
                <div class="col-md-5 tahsan2">
                    <div class="xzoom-container">
-                      
+                       
                       @foreach($multii as $multiss)
-                      <img class="xzoom" id="xzoom-default" src="{{url($multiss->image_name)}}" xoriginal="{{url($multiss->image_name)}}" alt="" />
+                      <img class="xzoom" id="xzoom-default" src="{{url('product_img/multi/'.$multiss->image_name)}}" xoriginal="{{url($multiss->image_name)}}" alt="" />
                       @endforeach
                         <div class="xzoom-thumbs">
                         @foreach($multi as $multis)
                         <a href="{{url($multis->image_name)}}">
-                        <img class="xzoom-gallery" width="80" src="{{url($multis->image_name)}}"  xpreview="{{url($multis->image_name)}}" alt=""></a>
+                        <img class="xzoom-gallery" width="80" src="{{url('product_img/multi/'.$multis->image_name)}}"  xpreview="{{url($multis->image_name)}}" alt=""></a>
                         @endforeach          
                       </div>
                     </div>
@@ -52,7 +52,7 @@
                    </div>
                    <div class="color-select category">
                       <div class="checkbox chek2 checkbox-success check22">
-                           <ul>
+                           {{-- <ul>
                               <li><span>Color</span></li>
                                @foreach(json_decode($product->product_color) as $colur)
                                <li>
@@ -60,10 +60,10 @@
                                     
                                </li>
                                @endforeach
-                           </ul>
+                           </ul> --}}
                         </div>
                         <div class="checkbox chek2 checkbox-success check33">
-                          <ul>
+                          {{-- <ul>
                               <li><span>Size</span></li>
                               @foreach(json_decode($product->product_color) as $size)
                                <li>
@@ -71,7 +71,7 @@
                                     
                                </li>
                                @endforeach
-                          </ul>
+                          </ul> --}}
                         </div>
                    </div>
                    <div class="quantity">

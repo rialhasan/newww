@@ -8,6 +8,6 @@ class SubCategory extends Model
 {
     function category(){
 
-        return $this->belongsTo("app\category", "category_id");
+        return $this->belongsTo("App\Category", "category_id");
     }
 }

@@ -45,7 +45,7 @@
                                                     <th scope="row">{{$products->firstItem() + $key }}</th>
                                                     <td>{{ $item->product_name}}</td>
                                                     <td class="text-center">{{ $item->product_price}}</td>
-                                                    <td class="text-center"><img width="100" height="100" src="{{ $item->category_thubnail}}" alt=""></td>
+                                                    <td class="text-center"><img width="100" height="100" src="{{ asset($item->product_thumbnail)}}" alt=""></td>
                                                     <td class="text-center">{{ $item->product_quantity}}</td>
                                                     <td class="text-center">
                                                     @foreach (App\MultiImage::where("product_id", $item->id)->get() as $proitem)

@@ -96,7 +96,7 @@
                             </div>
 
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="product_size" class="col-sm-4 control-label">Product Size</label>
                                 <div class="col-sm-10">
                                     <select multiple name="product_size" id="product_size" class="from-control"
@@ -107,7 +107,7 @@
                                     </select>
 
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                             <div class="form-group">

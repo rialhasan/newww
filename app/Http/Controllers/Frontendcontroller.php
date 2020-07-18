@@ -21,7 +21,7 @@ class Frontendcontroller extends Controller
         $product= Product::where('slug', $slug)->with('cate')->first();
         $multi= MultiImage::where("product_id",$product->id)->get();
         $multii= MultiImage::where("product_id",$product->id)->limit(1)->get();
-        return view('frontend.singleproduct',compact("product"," multi","multii"));
+        return view('frontend.singleproduct', compact("product","multi","multii"));
     }
 
     function SingleCart($id){
